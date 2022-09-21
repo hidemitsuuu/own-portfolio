@@ -16,25 +16,49 @@ class SampleView extends ConsumerWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'You have pushed the button this many times:',
+                  ),
+                  Text(
+                    viewModel.count,
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
             ),
-            Text(
-              viewModel.count,
-              style: Theme.of(context).textTheme.headline4,
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: ElevatedButton(
+                onPressed: viewModel.isLoading ? null : notifier.onPressed,
+                child: _buttonChild(viewModel.isLoading),
+              ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: notifier.fetchSample,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          )
+        ],
       ),
     );
+  }
+
+  Widget _buttonChild(bool isLoading) {
+    return isLoading
+        ? const Padding(
+            padding: EdgeInsets.all(8),
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
+          )
+        : const Padding(
+            padding: EdgeInsets.all(16),
+            child: Icon(Icons.add),
+          );
   }
 }
