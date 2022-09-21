@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:own_portfolio/util/mixin/load_management_mixin.dart';
+import 'package:own_portfolio/helper/mixin/load_management_mixin.dart';
 
 class ChangeNotifierWithLoading extends ChangeNotifier
     with LoadManagementMixin {

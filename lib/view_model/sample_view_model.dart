@@ -1,7 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:own_portfolio/helper/notifier/change_notifier_with_loading.dart';
+import 'package:own_portfolio/helper/util/number_format_util.dart';
 import 'package:own_portfolio/model/sample_model.dart';
 import 'package:own_portfolio/repository/sample_repository.dart';
-import 'package:own_portfolio/util/change_notifier_with_loading.dart';
 
 final sampleViewModelProvider = ChangeNotifierProvider(
     (ref) => SampleViewModel(repository: ref.read(sampleRepositoryProvider)));
@@ -17,8 +18,7 @@ class SampleViewModel extends ChangeNotifierWithLoading {
   String get count {
     final count = _sample?.count;
 
-    // カンマ区切りなどのロジックが入る想定
-    return count?.toString() ?? '--';
+    return count.signFormat();
   }
 
   Future<void> onPressed() async {
