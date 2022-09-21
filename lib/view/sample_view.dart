@@ -17,7 +17,7 @@ class SampleView extends ConsumerWidget {
         title: Text(title),
       ),
       body: Column(
-        children: [
+        children: <Widget>[
           Expanded(
             child: Center(
               child: Column(
@@ -25,6 +25,10 @@ class SampleView extends ConsumerWidget {
                 children: <Widget>[
                   const Text(
                     'You have pushed the button this many times:',
+                  ),
+                  Text(
+                    viewModel.limitedCount,
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                   Text(
                     viewModel.count,

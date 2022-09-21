@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:own_portfolio/helper/notifier/change_notifier_with_loading.dart';
 import 'package:own_portfolio/helper/util/number_format_util.dart';
@@ -15,10 +16,25 @@ class SampleViewModel extends ChangeNotifierWithLoading {
 
   SampleModel? _sample;
 
+  @visibleForTesting
+  void setSample(SampleModel sample) {
+    _sample = sample;
+  }
+
   String get count {
     final count = _sample?.count;
 
     return count.signFormat();
+  }
+
+  String get limitedCount {
+    final count = _sample?.count;
+
+    if (count != null && count > 9) {
+      return 'over 9';
+    }
+
+    return count?.toString() ?? '0';
   }
 
   Future<void> onPressed() async {
