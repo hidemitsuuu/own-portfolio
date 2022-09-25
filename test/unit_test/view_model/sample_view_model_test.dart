@@ -9,7 +9,7 @@ void main() {
       _Test(inputCount: 0, expected: '0'),
       _Test(inputCount: null, expected: '--'),
       _Test(inputCount: 999, expected: '+999'),
-      _Test(inputCount: 1000, expected: '+1,000'),
+      _Test(inputCount: 1000, expected: '1,000'),
     ]) {
       final viewModel = SampleViewModel(repository: SampleRepository());
       if (value.inputCount != null) {
