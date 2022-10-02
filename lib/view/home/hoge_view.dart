@@ -1,25 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:own_portfolio/view/home/sub/pie_chart_view.dart';
+import 'package:own_portfolio/view/home/sub/growth_curve_view.dart';
+import 'package:own_portfolio/view/home/sub/objective.dart';
+import 'package:own_portfolio/view/home/sub/profile_view.dart';
+import 'package:own_portfolio/view/home/sub/technology_stacks_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        _card(context),
-        const PieChartView(),
+        Expanded(
+          flex: 1,
+          child: Row(
+            children: const [
+              Expanded(
+                flex: 3,
+                // 自己紹介エリア
+                child: ProfileView(),
+              ),
+              Expanded(
+                flex: 2,
+                // 技術スタックの円グラフ
+                child: TechnologysStacksView(),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Row(
+            children: const [
+              Expanded(
+                flex: 1,
+                child: GrowthCurveView(),
+              ),
+              Expanded(
+                flex: 1,
+                child: ObjectiveView(),
+              ),
+            ],
+          ),
+        ),
       ],
-    );
-  }
-
-  Widget _card(BuildContext context) {
-    return const Card(
-      color: Colors.red,
-      child: Center(
-        child: Text('### DUMMTY CARD ###'),
-      ),
     );
   }
 }

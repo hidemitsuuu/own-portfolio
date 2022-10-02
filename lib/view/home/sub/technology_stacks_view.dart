@@ -2,14 +2,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:own_portfolio/gen/assets.gen.dart';
 
-class PieChartView extends StatefulWidget {
-  const PieChartView({Key? key}) : super(key: key);
+class TechnologysStacksView extends StatefulWidget {
+  const TechnologysStacksView({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => PieChartViewState();
+  State<StatefulWidget> createState() => TechnologyStacksViewState();
 }
 
-class PieChartViewState extends State {
+class TechnologyStacksViewState extends State {
   int touchedIndex = 0;
 
   @override
