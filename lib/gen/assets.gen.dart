@@ -15,6 +15,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/flutter.png
   AssetGenImage get flutter => const AssetGenImage('assets/images/flutter.png');
 
+  /// File path: assets/images/github_icon.jpeg
+  AssetGenImage get githubIcon =>
+      const AssetGenImage('assets/images/github_icon.jpeg');
+
   /// File path: assets/images/kotlin.png
   AssetGenImage get kotlin => const AssetGenImage('assets/images/kotlin.png');
 
@@ -25,7 +29,7 @@ class $AssetsImagesGen {
   AssetGenImage get swift => const AssetGenImage('assets/images/swift.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [flutter, kotlin, react, swift];
+  List<AssetGenImage> get values => [flutter, githubIcon, kotlin, react, swift];
 }
 
 class Assets {

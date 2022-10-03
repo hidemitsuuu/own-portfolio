@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:own_portfolio/view/home/sub/growth_curve_view.dart';
-import 'package:own_portfolio/view/home/sub/objective.dart';
+import 'package:own_portfolio/view/home/sub/objective_view.dart';
 import 'package:own_portfolio/view/home/sub/profile_view.dart';
 import 'package:own_portfolio/view/home/sub/technology_stacks_view.dart';
 
