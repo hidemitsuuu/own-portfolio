@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:own_portfolio/gen/assets.gen.dart';
+import 'package:own_portfolio/view/home/sub/title_view.dart';
 
 class TechnologysStacksView extends StatefulWidget {
   const TechnologysStacksView({Key? key}) : super(key: key);
@@ -18,19 +19,9 @@ class TechnologyStacksViewState extends State {
       color: Colors.white,
       child: Column(
         children: [
-          _titleView(),
+          const TitleView(title: '技術スタック'),
           _pieChartView(),
         ],
-      ),
-    );
-  }
-
-  Widget _titleView() {
-    return const Align(
-      alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Text('技術スタック'),
       ),
     );
   }
