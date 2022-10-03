@@ -16,6 +16,27 @@ class TechnologyStacksViewState extends State {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
+      child: Column(
+        children: [
+          _titleView(),
+          _pieChartView(),
+        ],
+      ),
+    );
+  }
+
+  Widget _titleView() {
+    return const Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Text('技術スタック'),
+      ),
+    );
+  }
+
+  Widget _pieChartView() {
+    return Expanded(
       child: AspectRatio(
         aspectRatio: 1,
         child: PieChart(
