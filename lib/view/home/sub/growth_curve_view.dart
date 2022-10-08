@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:own_portfolio/view/home/sub/title_view.dart';
 
 class GrowthCurveView extends StatefulWidget {
   const GrowthCurveView({Key? key}) : super(key: key);
@@ -21,82 +22,68 @@ class GrowthCurveViewState extends State<GrowthCurveView> {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
-      child: Center(
-        child: _lineChartView(),
+      child: Column(
+        children: [
+          const TitleView(title: '技術スタック'),
+          _lineChartView(),
+        ],
       ),
     );
   }
 
   Widget _lineChartView() {
-    return AspectRatio(
-      aspectRatio: 1.23,
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(18)),
-          gradient: LinearGradient(
-            colors: [
-              Color(0xff2c274c),
-              Color(0xff46426c),
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          ),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                const SizedBox(
-                  height: 37,
-                ),
-                const Text(
-                  'Unfold Shop 2018',
-                  style: TextStyle(
-                    color: Color(0xff827daa),
-                    fontSize: 16,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Text(
-                  'Monthly Sales',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 37,
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                    child: _LineChart(isShowingMainData: isShowingMainData),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
+    return SizedBox(
+      height: 300,
+      child: AspectRatio(
+        aspectRatio: 1.5,
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(18)),
+            gradient: LinearGradient(
+              colors: [
+                Color(0xff2c274c),
+                Color(0xff46426c),
               ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
             ),
-            IconButton(
-              icon: Icon(
-                Icons.refresh,
-                color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+          ),
+          child: Stack(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  const SizedBox(
+                    height: 37,
+                  ),
+                  const SizedBox(
+                    height: 37,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+                      child: _LineChart(isShowingMainData: isShowingMainData),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
               ),
-              onPressed: () {
-                setState(() {
-                  isShowingMainData = !isShowingMainData;
-                });
-              },
-            )
-          ],
+              IconButton(
+                icon: Icon(
+                  Icons.refresh,
+                  color:
+                      Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                ),
+                onPressed: () {
+                  setState(() {
+                    isShowingMainData = !isShowingMainData;
+                  });
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
