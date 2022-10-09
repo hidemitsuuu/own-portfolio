@@ -2,21 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:own_portfolio/view/home/sub/title_view.dart';
 
-class GrowthCurveView extends StatefulWidget {
+class GrowthCurveView extends StatelessWidget {
   const GrowthCurveView({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => GrowthCurveViewState();
-}
-
-class GrowthCurveViewState extends State<GrowthCurveView> {
-  late bool isShowingMainData;
-
-  @override
-  void initState() {
-    super.initState();
-    isShowingMainData = true;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,25 +49,13 @@ class GrowthCurveViewState extends State<GrowthCurveView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                      child: _LineChart(isShowingMainData: isShowingMainData),
+                      child: _LineChart(),
                     ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                 ],
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.refresh,
-                  color:
-                      Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-                ),
-                onPressed: () {
-                  setState(() {
-                    isShowingMainData = !isShowingMainData;
-                  });
-                },
               )
             ],
           ),
@@ -91,14 +66,10 @@ class GrowthCurveViewState extends State<GrowthCurveView> {
 }
 
 class _LineChart extends StatelessWidget {
-  const _LineChart({required this.isShowingMainData});
-
-  final bool isShowingMainData;
-
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      isShowingMainData ? sampleData1 : sampleData2,
+      sampleData2,
       swapAnimationDuration: const Duration(milliseconds: 250),
     );
   }
